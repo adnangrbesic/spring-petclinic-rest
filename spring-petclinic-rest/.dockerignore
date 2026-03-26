@@ -1,9 +1,8 @@
 node_modules
 npm-debug.log
 .git
-dist
+target
 .vscode
 .idea
-.angular
-e2e
-coverage
+*.iml
+spring-petclinic-angular
