@@ -1,4 +1,4 @@
-FROM maven:3.9.9-eclipse-temurin-21-alpine AS build
+FROM maven:3.9-eclipse-temurin-21 AS builder
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
@@ -6,6 +6,9 @@ RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:25-jre-alpine
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+COPY --from=builder /app/target/*.jar app.jar
 EXPOSE 9966
-ENTRYPOINT ["java", "-Dspring.profiles.active=postgres,spring-data-jpa", "-Dspring.datasource.url=jdbc:postgresql://petclinic-db/petclinic", "-jar", "app.jar"]
+
+ENTRYPOINT ["/entrypoint.sh"]

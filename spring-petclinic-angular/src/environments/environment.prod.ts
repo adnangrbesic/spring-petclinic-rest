@@ -22,5 +22,6 @@
 
 export const environment = {
   production: true,
-  REST_API_URL: 'http://localhost:9966/petclinic/api/'
+  // @ts-ignore
+  REST_API_URL: window['env']?.['REST_API_URL'] || 'http://localhost:9966/petclinic/api/'
 };
