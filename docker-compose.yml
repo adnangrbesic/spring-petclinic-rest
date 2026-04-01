@@ -1,0 +1,49 @@
+services:
+  postgres:
+    build:
+      context: ./db
+    image: petclinic-db
+    container_name: petclinic-db
+    ports:
+      - "${DB_HOST_PORT:-5433}:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./spring-petclinic-rest
+    image: petclinic-backend
+    container_name: petclinic-backend
+    ports:
+      - "${BACKEND_PORT}:9966"
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./spring-petclinic-angular
+    image: petclinic-frontend
+    container_name: petclinic-frontend
+    ports:
+      - "${FRONTEND_PORT}:80"
+    env_file:
+      - .env
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
