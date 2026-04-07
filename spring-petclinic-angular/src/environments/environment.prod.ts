@@ -22,6 +22,5 @@
 
 export const environment = {
   production: true,
-  // @ts-ignore
-  REST_API_URL: window['env']?.['REST_API_URL'] || 'http://localhost:9966/petclinic/api/'
+  REST_API_URL: 'https://backend.praksa.abhapp.com/petclinic/api/'
 };
