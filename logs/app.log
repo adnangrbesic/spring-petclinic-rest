@@ -1,0 +1,49 @@
+2026-04-07 11:01:09.172 [main] INFO  o.s.s.petclinic.PetClinicApplication - Starting PetClinicApplication v4.0.2 using Java 25.0.2 with PID 7 (/app/app.jar started by root in /app)
+2026-04-07 11:01:09.184 [main] DEBUG o.s.s.petclinic.PetClinicApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-04-07 11:01:09.184 [main] INFO  o.s.s.petclinic.PetClinicApplication - The following 2 profiles are active: "postgres", "spring-data-jpa"
+2026-04-07 11:01:10.612 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-04-07 11:01:11.959 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 11:01:12.102 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 127 ms. Found 7 JPA repository interfaces.
+2026-04-07 11:01:13.349 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 9966 (http)
+2026-04-07 11:01:13.371 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9966"]
+2026-04-07 11:01:13.374 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 11:01:13.374 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-04-07 11:01:13.418 [main] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 4023 ms
+2026-04-07 11:01:13.822 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-07 11:01:14.172 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3dee3a6c
+2026-04-07 11:01:14.174 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-07 11:01:14.719 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-07 11:01:14.833 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-04-07 11:01:15.733 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 11:01:15.911 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://postgres:5432/petclinic]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 16.13
+	Default catalog/schema: petclinic/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-07 11:01:17.711 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 11:01:17.729 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 11:01:17.905 [main] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 11:01:19.696 [main] WARN  o.s.b.s.a.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 8bb91e1a-65f3-4b21-84de-ef7b1ea9d768
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 11:01:19.716 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-04-07 11:01:20.996 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2026-04-07 11:01:21.101 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9966"]
+2026-04-07 11:01:21.138 [main] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 9966 (http) with context path '/petclinic'
+2026-04-07 11:01:21.158 [main] INFO  o.s.s.petclinic.PetClinicApplication - Started PetClinicApplication in 13.21 seconds (process running for 16.004)
+2026-04-07 11:01:21.303 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-07 11:01:21.303 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-07 11:01:34.013 [http-nio-9966-exec-1] INFO  o.a.c.c.C.[.[localhost].[/petclinic] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-07 11:01:34.014 [http-nio-9966-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-07 11:01:34.016 [http-nio-9966-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-04-07 11:27:51.893 [http-nio-9966-exec-7] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 2214 ms
