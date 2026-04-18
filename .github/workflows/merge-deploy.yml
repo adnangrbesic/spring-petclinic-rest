@@ -9,6 +9,10 @@ jobs:
   build-and-deploy:
     runs-on: self-hosted
 
+    defaults:
+      run:
+        working-directory: spring-petclinic-rest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,7 +24,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Maven
-        run: mvn clean package -DskipTests
+        run: ./mvnw clean package -DskipTests
 
       - name: Build Docker image
         run: docker build -t petclinic:latest .
