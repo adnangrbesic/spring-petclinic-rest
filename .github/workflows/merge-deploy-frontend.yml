@@ -1,0 +1,36 @@
+name: Build and Deploy Frontend on Merge
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    defaults:
+      run:
+        working-directory: spring-petclinic-angular
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Build Docker image
+        run: docker build -t petclinic-frontend:latest .
+
+      - name: Deploy with docker-compose
+        working-directory: .
+        run: docker compose up -d
