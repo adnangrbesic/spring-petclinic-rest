@@ -27,6 +27,7 @@ jobs:
         run: ./mvnw clean package -DskipTests
 
       - name: Build Docker image
+        working-directory: .
         run: docker build -t petclinic:latest .
 
       - name: Deploy with docker-compose
