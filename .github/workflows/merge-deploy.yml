@@ -19,8 +19,12 @@ jobs:
           distribution: 'temurin'
       - name: Build with Maven
         run: ./mvnw clean package -DskipTests
+      - name: Set image tag
+        id: vars
+        run: echo "TAG=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Build Docker image
-        run: docker build -t petclinic:latest .
+        run: |
+          docker build -t petclinic:latest -t petclinic:${{ steps.vars.outputs.TAG }} .
       - name: Deploy with docker-compose
         working-directory: .
         run: docker compose up -d
