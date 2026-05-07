@@ -1,0 +1,14 @@
+org/springframework/samples/petclinic/service/userService/UserServiceH2JdbcTests.class
+org/springframework/samples/petclinic/SpringConfigTests.class
+org/springframework/samples/petclinic/model/ValidatorTests.class
+org/springframework/samples/petclinic/service/clinicService/ApplicationTestConfig.class
+org/springframework/samples/petclinic/service/userService/UserServiceSpringDataJpaTests.class
+org/springframework/samples/petclinic/service/clinicService/ClinicServiceSpringDataJpaTests.class
+org/springframework/samples/petclinic/service/clinicService/ClinicServiceHsqlJdbcTests.class
+org/springframework/samples/petclinic/service/clinicService/ClinicServiceJpaTests.class
+org/springframework/validation/PetAgeValidatorTest.class
+org/springframework/samples/petclinic/service/clinicService/AbstractClinicServiceTests.class
+org/springframework/samples/petclinic/service/userService/UserServiceJpaTests.class
+org/springframework/samples/petclinic/service/userService/AbstractUserServiceTests.class
+org/springframework/samples/petclinic/service/userService/UserServiceHsqlJdbcTests.class
+org/springframework/samples/petclinic/service/clinicService/ClinicServiceH2JdbcTests.class
