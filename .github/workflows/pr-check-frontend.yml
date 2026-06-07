@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -27,3 +29,17 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Test with coverage
+        run: npm run test-headless -- --code-coverage
+        continue-on-error: true
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: spring-petclinic-angular
+          args: >
+            -Dsonar.organization=adnagrbestic
+            -Dsonar.projectKey=spring-petclinic-angular
