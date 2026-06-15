@@ -29,12 +29,15 @@ spec:
       labels:
         app: postgres
     spec:
+      automountServiceAccountToken: false
       containers:
         - name: postgres
           image: "{{ .Values.postgres.image.repository }}:{{ .Values.postgres.image.tag }}"
           imagePullPolicy: {{ .Values.postgres.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.postgres.service.port }}
+          resources:
+            {{- toYaml .Values.postgres.resources | nindent 12 }}
           env:
             - name: POSTGRES_DB
               valueFrom:
@@ -62,3 +65,5 @@ spec:
         resources:
           requests:
             storage: {{ .Values.postgres.storage.size }}
+          limits:
+            storage: {{ .Values.postgres.storage.limit }}
