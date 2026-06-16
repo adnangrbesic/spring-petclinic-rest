@@ -1,0 +1,97 @@
+backend:
+  replicaCount: 1
+  image:
+    repository: petclinic-backend
+    tag: "1.0.0"
+    pullPolicy: Never
+  service:
+    port: 9966
+  env:
+    port: "9966"
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+      ephemeral-storage: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+      ephemeral-storage: 1Gi
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: petclinic-frontend
+    tag: "1.0.0"
+    pullPolicy: Never
+  service:
+    port: 80
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+      ephemeral-storage: 128Mi
+    limits:
+      cpu: 300m
+      memory: 256Mi
+      ephemeral-storage: 512Mi
+
+postgres:
+  replicaCount: 1
+  image:
+    repository: petclinic-db
+    tag: "1.0.0"
+    pullPolicy: Never
+  service:
+    port: 5432
+  storage:
+    size: 1Gi
+    limit: 5Gi
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+      ephemeral-storage: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+      ephemeral-storage: 1Gi
+  secret:
+    dbName: petclinic
+    dbUser: petclinic
+    dbPassword: petclinic
+
+ingress:
+  enabled: true
+  hosts:
+    - host: petclinic.localhost
+      paths:
+        - path: /
+          pathType: Prefix
+          service: frontend
+          port: 80
+    - host: api.petclinic.localhost
+      paths:
+        - path: /
+          pathType: Prefix
+          service: backend
+          port: 9966
+
+# Additional volumes on the output Deployment definition.
+volumes: []
+  # - name: foo
+  #   secret:
+  #     secretName: mysecret
+  #     optional: false
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts: []
+  # - name: foo
+  #   mountPath: "/etc/foo"
+  #   readOnly: true
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
